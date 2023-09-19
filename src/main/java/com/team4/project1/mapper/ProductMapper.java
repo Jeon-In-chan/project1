@@ -8,7 +8,7 @@ import com.team4.project1.domain.ProductVO;
 
 public interface ProductMapper {
 	
-	@Select("select * from PRODUCT where p_no >0")
+	//@Select("select * from product where p_no >0")
 	public List<ProductVO> getList();
 	
 }
