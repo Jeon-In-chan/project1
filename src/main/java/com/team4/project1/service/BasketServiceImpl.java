@@ -8,22 +8,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.team4.project1.domain.BasketVO;
-import com.team4.project1.repository.BasketRepository;
+import com.team4.project1.mapper.BasketMapper;
 
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+@Log4j
 @Service
 public class BasketServiceImpl implements BasketService {
-	@Autowired
-	private BasketRepository basketRepository;
+
+	@Setter(onMethod_ = @Autowired)
+	private BasketMapper mapper;
 	
 	@Override
-	public BasketVO create(BasketVO vo) {
-		// TODO Auto-generated method stub
-		return basketRepository.create(vo);
-	}
-
-	@Override
-	public BasketVO read(String b_no) {
-		// TODO Auto-generated method stub
-		return basketRepository.read(b_no);
+	public List<BasketVO> getList() {
+		log.info("basket list");
+		return mapper.getList();
 }
 }

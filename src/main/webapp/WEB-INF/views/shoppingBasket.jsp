@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="./header/header.jsp"%>
 <html>
 <head>
@@ -189,6 +190,19 @@ text-align: left;
                         <td> 상품 수량 </td>
                         <td><span class="price"> 상품금액 </td>
                     </tr>   
+                    <c:forEach items="${list}" var="basket">
+						<tr>
+							<td><input type="checkbox"></td>
+							<td>image</td>
+							<td>${basket.b_no }</td>
+							<td>${basket.p_name }</td>
+							<td>${basket.p_no }</td>
+							<td>${basket.b_regDate }</td>
+							<td>${basket.quantity }</td>
+							<td>${basket.price}</td>
+						
+						</tr>
+					</c:forEach>
                 </tbody>
                 <tfoot>
                     <tr>

@@ -13,7 +13,7 @@ public class ProductVO {
 		private String p_type;
 		private String p_producer;
 		private Long p_size;
-		private Long price;
+		private int price;
 		private String p_content;
 		private MultipartFile image;
 		private Long stock;

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team4.project1.mapper.BasketMapper">
+
+<select id="getList" resultType="com.team4.project1.domain.BasketVO">
+select s.b_no, s.p_no, s.quantity, s.b_regDate, p.p_name, p.price  from shoppingBasket s left join product p on s.p_no = p.p_no where s.p_no >0
+</select>
+
+
+</mapper>

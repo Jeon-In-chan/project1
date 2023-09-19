@@ -14,45 +14,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.team4.project1.domain.BasketVO;
-import com.team4.project1.repository.BasketRepository;
 import com.team4.project1.service.BasketService;
 
 @Controller
 @RequestMapping("/shoppingBasket")
 public class ShoppingBasketController {
 	
-	@Autowired
-	private BasketRepository basketRepository;
 	
 	@Autowired
 	private BasketService basketService;
 	
 	@GetMapping({"/", ""})
-	public void inShoppingBasket() {
+	public void inShoppingBasket(Model model) {
 		System.out.println("장바구니로 이동");
+		model.addAttribute("list", basketService.getList());
 	}
 	
-	@GetMapping
-	public String requestBasketNumber(HttpServletRequest request) {
-		String sessionno = request.getSession(true).getId();
-		return "redirect://shoppingBasket/" + sessionno;
-	}
 
-	@PostMapping
-	public @ResponseBody BasketVO create(@RequestBody BasketVO vo) {
-		return basketService.create(vo);
-	}
-
-	@GetMapping("/{b_no}")
-	public String requestBasketList(@PathVariable("b_no") String b_no, Model model) {
-		BasketVO vo = basketService.read(b_no);
-		model.addAttribute("vo", vo);
-		return "vo";
-	}
-
-	@PutMapping("/{b_no}")
-	public @ResponseBody BasketVO read(@PathVariable("b_no") String b_no) {
-		return basketService.read(b_no);
-	}
 }
 	

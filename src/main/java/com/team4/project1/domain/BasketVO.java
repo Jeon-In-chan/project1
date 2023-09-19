@@ -15,6 +15,6 @@ public class BasketVO {
 	private Date b_regDate;
 	private boolean image;
 	
-
+	private ProductVO productVO;
 
 }
