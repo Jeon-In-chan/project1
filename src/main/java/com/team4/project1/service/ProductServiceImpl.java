@@ -22,5 +22,11 @@ public class ProductServiceImpl implements ProductService {
 		log.info("get list");
 		return mapper.getList();
 	}
+	
+	@Override
+	public void register(ProductVO productVO) {
+		log.info("register : "+productVO);
+		mapper.insertSelectKey(productVO);
+	}
 
 }

@@ -91,10 +91,11 @@ a.button:hover {
   <h1>쇼핑몰 이름</h1>
   <nav>
     <ul>
-      <li><a href="#">제품 검색</a></li>
+      <li><a href="/project1/home/product/">제품 목록</a></li>
       <li><a href="/project1/shoppingBasket/">장바구니</a></li>
       <li><a href="#">회원 정보 수정</a></li>
       <li><a href="#">회원 목록</a></li>
+      <li><a href="/project1/home/register/">제품 등록</a></li>
      
     </ul>
   </nav>
