@@ -63,18 +63,17 @@ textarea#p_content {
 </style>
 </head>
 <body>
-	<form role="form" method="post" action="/home/register">
-		<input type="hidden" name="${_csrf.parameterName }"
-			value="${_csrf.token }" />
+	<form role="form" method="post" modelAttribute="NewProduct">
+		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
 
 		<div class="inputArea">
-			<label>종류</label> <select id="p_type" class="p_type" target='${productVO.p_type}'>
-				<option>종류</option>
-				<option value="1">상의</option>
-				<option value="2">하의</option>
-				<option value="3">신발</option>
-				<option value="4">잡화</option>
-				<option value="5">세트</option>
+			<label>종류</label> <select id="p_type" class="p_type">
+				<option name="p_type" value="">종류</option>
+				<option name="p_type" value="1">상의</option>
+				<option name="p_type" value="2">하의</option>
+				<option name="p_type" value="3">신발</option>
+				<option name="p_type" value="4">잡화</option>
+				<option name="p_type" value="5">세트</option>
 			</select> <label>사이즈</label> <select class="p_size" name="cateCode">
 				<option value="75">75</option>
 				<option value="80">80</option>
@@ -119,31 +118,27 @@ textarea#p_content {
 		</div>
 
 		<div class="inputArea">
-			<label>이미지</label>
+			<label >이미지</label>
 			<div class="custom-file">
-				<input type="file" name='uploadFile' multiple> <label
-					data-browse="Browse"></label>
-
+				<input  type="file" name='uploadFile' multiple> 
+				<label  data-browse="Browse"></label>
+				
 			</div>
 		</div>
-
+		
 		<div class="uploadResult">
-			<ul>
+					<ul>
 
-			</ul>
-		</div>
-
+					</ul>
+				</div>
+	
 		<div class="inputArea">
 			<button type="submit" id="register_Btn" class="btn btn-primary">등록</button>
 		</div>
 
-		<script>
+<script>
 $(document).ready(function(e) {
 	var formObj = $("form[role='form']");
-	
-	var tg = $("#p_type").attr("target");
-    // 이 경우 tg 에는 특정 인덱스 값이 들어갈 것이다.
-    $("p_type option:eq(tg)").prop("selected",true);
 	
 	$("button[type='submit']").on("click", function(e) {
 		e.preventDefault();
