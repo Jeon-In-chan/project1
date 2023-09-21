@@ -67,7 +67,8 @@ tr:last-child td:last-child {
   	<c:forEach items="${list}" var="product">
 		<tr>
 			<td><c:out value="${product.p_no }" /></td>
-			<td><c:out value="${product.image }" /></td>
+			<td><img if="${product.imageVO.size()>0 && product.imageVO[0].path != null}"
+                         src="${product.imageVO[0].getThumbnailURL()}"></td>
 			<td><c:out value="${product.p_name}" /></td>
 			<td><c:out value="${product.price }" /></td>
 		</tr>
