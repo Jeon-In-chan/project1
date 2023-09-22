@@ -63,18 +63,19 @@ textarea#p_content {
 </style>
 </head>
 <body>
-	<form role="form" method="post" modelAttribute="NewProduct">
+	<form role="form" method="post" >
 		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
 
 		<div class="inputArea">
-			<label>종류</label> <select id="p_type" class="p_type">
-				<option name="p_type" value="">종류</option>
-				<option name="p_type" value="1">상의</option>
-				<option name="p_type" value="2">하의</option>
-				<option name="p_type" value="3">신발</option>
-				<option name="p_type" value="4">잡화</option>
-				<option name="p_type" value="5">세트</option>
-			</select> <label>사이즈</label> <select class="p_size" name="cateCode">
+			<label>종류</label> <select id="p_type" name="p_type" class="p_type">
+				<option  value="">종류</option>
+				<option  value="1">상의</option>
+				<option  value="2">하의</option>
+				<option  value="3">신발</option>
+				<option  value="4">잡화</option>
+				<option  value="5">세트</option>
+			</select>
+			 <label>사이즈</label> <select class="p_size" name="p_size">
 				<option value="75">75</option>
 				<option value="80">80</option>
 				<option value="85">85</option>

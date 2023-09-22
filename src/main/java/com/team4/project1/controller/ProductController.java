@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -41,7 +42,7 @@ public class ProductController {
 	}
 	@PostMapping("/register")
 	@PreAuthorize("isAuthenticated()")
-	public String register(ProductVO productVO, RedirectAttributes attributes) {
+	public String register(ProductVO productVO, RedirectAttributes attributes, @RequestParam("p_type") String p_type, @RequestParam("p_size") Long p_size) {
 		log.info("========================================================");
 		log.info("register: " + productVO);
 		if(productVO.getImageVO() != null) {
@@ -49,6 +50,8 @@ public class ProductController {
 		}
 		log.info("=========================================================");
 		productService.register(productVO);
+		productVO.setP_type(p_type);
+		productVO.setP_size(p_size);
 		attributes.addFlashAttribute("result", productVO.getP_no()); //일회성
 		return "redirect:/home/product";
 		

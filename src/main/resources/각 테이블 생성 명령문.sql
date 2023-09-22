@@ -17,7 +17,6 @@ p_producer varchar2(50) not null,
 p_size number(3) DEFAULT 90,
 price number(7) default 0,
 p_content varchar2(1000) default null,
-image varchar2(100),
 stock  number(7) default 0,
 sale char default 'y', -- 판매 : y, 판매중단 : n
 regdate date default SYSDATE
@@ -46,6 +45,18 @@ constraint fk_product_no foreign key(p_no) references product(p_no)
 );
 create sequence shoppingBasket_seq start with 1 increment by 1; --장바구니 번호 생성
 
+create table productImage (
+uuid varchar2(100) not null,
+uploadPath varchar2(200) not null,
+fileName varchar2(100) not null,
+filetype char(1) default 'I',
+p_no number(10,0)
+);
+
+alter table productImage add constraint pk_image primary key (uuid);
+
+alter table productImage add constraint fk_product_image foreign key (p_no) references product(p_no);
+
 create table orders(
     o_no number(10) primary key,
     o_id varchar2(20),
@@ -60,11 +71,13 @@ insert into admin(a_id,a_pw,a_name,a_p_number,a_email,a_authority) values ('admi
 insert into users(u_id,u_pw,u_name,u_p_number,u_email,u_address) values ('user0', 'pw0', 'user0', '010-000-0000',
 'user@gmail.com', '서울 어딘가');
 
-insert into product(p_no,p_name,p_type, p_producer,p_size,price,p_content,image,stock, sale)
-values ('1', '연습상품', '1', '나이키', '100', '19800', '연습 제품', '현재 이미지 없음', '30', 'y');
+insert into product(p_no,p_name,p_type, p_producer,p_size,price,p_content,stock, sale)
+values ('1', '연습상품', '1', '나이키', '100', '19800', '연습 제품', '30', 'y');
 
 insert into shoppingBasket(b_no,u_id ,p_no,quantity)
-values ('1', 'user0', '1', '10');
+values ('2', 'user0', '1', '10');
 
 insert into orders(o_no,o_id)
 values ('1', 'user0');
+
+commit;
