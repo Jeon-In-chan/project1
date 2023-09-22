@@ -6,10 +6,8 @@ import java.util.List;
 
 
 import lombok.Data;
-import lombok.ToString;
 
 @Data
-@ToString
 public class ProductVO {
 		private Long p_no;
 		private String p_name;

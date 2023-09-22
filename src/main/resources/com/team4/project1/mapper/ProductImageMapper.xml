@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.team4.project1.mapper.ProductImageMapper">
 
 <insert id="insert">
-	insert into productImage (uuid, uploadPath, fileName, filetype, p_no)
+	insert into productImage (uuid, uploadPath, fileName, fileType, p_no)
 	values (#{uuid}, #{uploadPath}, #{fileName}, #{fileType}, #{p_no})
 </insert>
 

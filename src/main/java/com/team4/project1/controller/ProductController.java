@@ -26,7 +26,6 @@ import oracle.net.aso.p;
 @Log4j
 @RequestMapping("/home/*")
 @AllArgsConstructor
-@MapperScan(basePackages = "com.team4.project1.mapper")
 public class ProductController {
 	private ProductService productService;
 	

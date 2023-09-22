@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@include file="../header/header.jsp"%>
 <!DOCTYPE html>
 <html>
@@ -120,10 +119,8 @@ textarea#p_content {
 
 		<div class="inputArea">
 			<label >이미지</label>
-			<div class="custom-file">
-				<input  type="file" name='uploadFile' multiple> 
-				<label  data-browse="Browse"></label>
-				
+			<div class="uploadDiv">
+				<input  type="file" name='uploadFile' multiple> 				
 			</div>
 		</div>
 		

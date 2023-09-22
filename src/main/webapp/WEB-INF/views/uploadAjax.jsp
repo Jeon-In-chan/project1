@@ -70,7 +70,6 @@
 			var formData = new FormData();
 			var inputFile = $("input[name='uploadFile']");
 			var files = inputFile[0].files;
-
 			console.log(files);
 			// add filedate to formdata
 			for (var i = 0; i < files.length; i++) {
@@ -78,9 +77,9 @@
 					return false;
 				}
 				
-				formData.append("uploadFile", files[i]);
+				formData.append('uploadFile', files[i]);
 			}
-
+		
 			$.ajax({
 				url : '/uploadAjaxAction',
 				processData : false,
@@ -166,12 +165,10 @@
 </head>
 <body>
 	<h1>Upload with Ajax</h1>
-
 	<div class='uploadDiv'>
 		<input type='file' name='uploadFile' multiple>
 	</div>
 	<button id='uploadBtn'>Upload</button>
-
 	<div class="uploadResult">
 		<ul>
 		
