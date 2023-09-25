@@ -63,8 +63,8 @@ textarea#p_content {
 </head>
 <body>
 	<form role="form" method="post" >
-		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
-
+<%-- 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+ --%>
 		<div class="inputArea">
 			<label>종류</label> <select id="p_type" name="p_type" class="p_type">
 				<option  value="">종류</option>
@@ -156,8 +156,8 @@ $(document).ready(function(e) {
 	});
 	
 	
-	var csrfHeaderName = "${_csrf.headerName}";
-	var csrfTokenValue = "${_csrf.token}";
+/* 	var csrfHeaderName = "${_csrf.headerName}";
+	var csrfTokenValue = "${_csrf.token}"; */
 	
 	$("input[type='file']").change(function(e) {
 		var formData = new FormData();
@@ -172,12 +172,12 @@ $(document).ready(function(e) {
 		}
 		
 		$.ajax({
-			url: '/uploadAjaxAction',
+			url: '/project1/uploadAjaxAction',
 			processData: false,
 			contentType: false,
-			beforeSend: function(xhr) {
+		/* 	beforeSend: function(xhr) {
 						xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
-			},
+			}, */
 			data: formData,
 			type: 'POST',
 			success: function(result){
@@ -196,9 +196,9 @@ $(document).ready(function(e) {
 		$.ajax({
 			url: '/deleteFile',
 			data: {fileName: targetFile, type: type},
-			beforeSend: function(xhr) {
+		/* 	beforeSend: function(xhr) {
 				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
-			},
+			}, */
 			dataType: 'text',
 			type: 'POST',
 				success: function(result) {
@@ -248,7 +248,7 @@ function showUploadResult(uploadResultArr) {
    
 		        str += "<li data-path='"+obj.uploadPath+"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'><div>";
 				str += "<span>" + obj.fileName + "</span>"; 
-				str += "<button type='button' data-file='"+fileCallPath+"' data-type='image' class='btn btn-warning btn-circle'>";
+				str += "<button type='button' data-file='"+fileCallPath+"' data-type='image' class='btn btn-warning'>";
 				str += "<i class='fa fa-times'></i></button><br>"; 
 				str += "<img src='/display?fileName="+fileCallPath+"'>";
 				str += "</div></li>";

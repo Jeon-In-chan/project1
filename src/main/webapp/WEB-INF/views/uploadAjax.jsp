@@ -81,7 +81,7 @@
 			}
 		
 			$.ajax({
-				url : '/uploadAjaxAction',
+				url : '/project1/uploadAjaxAction',
 				processData : false,
 				contentType : false,
 				data : formData,
@@ -166,7 +166,7 @@
 <body>
 	<h1>Upload with Ajax</h1>
 	<div class='uploadDiv'>
-		<input type='file' name='uploadFile' multiple>
+		<input type='file' name='uploadFile' id='uploadFile' multiple>
 	</div>
 	<button id='uploadBtn'>Upload</button>
 	<div class="uploadResult">

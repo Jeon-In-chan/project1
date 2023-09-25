@@ -50,6 +50,58 @@ tr:last-child td:last-child {
   border-bottom-right-radius: 6px;
 }
 </style>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	(function() {
+		var p_no = '<c:out value="${product.p_no }" />';
+		$.getJSON("/home/getImageList", {p_no: p_no}, function(arr){
+			console.log(arr);
+			var str = "";
+			$(arr).each(function(i, image){
+				var extensionName = image.fileName.substring(image.fileName.lastIndexOf("."));
+				var pureFileName = image.fileName.substring(0, image.fileName.lastIndexOf("."));
+				
+				//image type
+				if(image.fileType){
+					var fileCallPath = encodeURIComponent(image.uploadPath + "/"+pureFileName + "_" + image.uuid + "_s" + extensionName);	
+					
+					    str += "<li data-path='"+image.uploadPath+"' data-uuid='"+image.uuid+"' data-filename='"+image.fileName+"' data-type='"+image.fileType+"'><div>";
+						str += "<img src='/display?fileName="+fileCallPath+"'>";
+						str += "</div></li>";
+				}else {
+					var fileCallPath = encodeURIComponent(image.uploadPath + "/"+pureFileName + "_" + image.uuid + "_s" + extensionName);	
+					
+				    str += "<li data-path='"+image.uploadPath+"' data-uuid='"+image.uuid+"' data-filename='"+image.fileName+"' data-type='"+image.fileType+"'><div>";
+					str += "<span>" + image.fileName + "</span><br>";
+					str += "<img src='/resources/img/attach.png'>";
+					str += "</div></li>";
+				}
+			});
+			$(".uploadResult ul").html(str);
+		});
+	})();
+	
+	$(".uploadResult").on("click", "li", function(e) {
+		console.log("view image");
+		var liObj = $(this);
+		var extensionName = liObj.data("filename").substring(liObj.data("filename").lastIndexOf("."));
+		var pureFileName = liObj.data("filename").substring(0, liObj.data("filename").lastIndexOf("."));
+		var path = encodeURIComponent(liObj.data("path")+"/"+pureFileName+"_"+liObj.data("uuid")+extensionName);
+		if(liObj.data("type")){
+			showImage(path.replace(new RegExp(/\\/g), "/"));
+		} else {
+			//download
+			self.location ="/download?fileName="+path;
+		}
+	});
+	
+	
+
+});
+</script>
+
 </head>
 <body>
 
@@ -66,9 +118,8 @@ tr:last-child td:last-child {
   <tbody>
   	<c:forEach items="${list}" var="product">
 		<tr>
-			<td><c:out value="${product.p_no }" /></td>
-			<td><img if="${product.imageVO.size()>0 && product.imageVO[0].path != null}"
-                         src="${product.imageVO[0].getThumbnailURL()}"></td>
+			<td name="p_no"><c:out value="${product.p_no }" /></td>
+			<td><div class="uploadResult"><ul></ul></div></td>
 			<td><c:out value="${product.p_name}" /></td>
 			<td><c:out value="${product.price }" /></td>
 		</tr>

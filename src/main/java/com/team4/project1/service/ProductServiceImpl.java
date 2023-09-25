@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.team4.project1.domain.ProductImageVO;
 import com.team4.project1.domain.ProductVO;
 import com.team4.project1.mapper.ProductImageMapper;
 import com.team4.project1.mapper.ProductMapper;
@@ -36,7 +37,14 @@ public class ProductServiceImpl implements ProductService {
 		productVO.getImageVO().forEach(image -> {
 			image.setP_no(productVO.getP_no());
 			imageMapper.insert(image);
+			log.info(image);
 		});
+	}
+	
+	@Override
+	public List<ProductImageVO> getImageList(Long p_no) {
+		log.info("get image list by p_no"+p_no);
+		return imageMapper.findByp_no(p_no);
 	}
 
 }

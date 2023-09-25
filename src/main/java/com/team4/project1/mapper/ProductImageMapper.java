@@ -10,9 +10,9 @@ public interface ProductImageMapper {
 
 	public void delete(String uuid);
 
-	public List<ProductImageVO> findByBno(Long bno);
+	public List<ProductImageVO> findByp_no(Long p_no);
 
-	public void deleteAll(Long bno);
+	public void deleteAll(Long p_no);
 
 	public List<ProductImageVO> getOldFiles();
 
