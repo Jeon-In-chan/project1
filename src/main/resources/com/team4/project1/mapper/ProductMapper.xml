@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team4.project1.mapper.ProductMapper">
+
+<select id="getList" resultType="com.team4.project1.domain.ProductVO">
+<![CDATA[
+select * from product where p_no >0
+]]>
+</select>
+
+<insert id="insert">
+insert into product(p_no,p_name,p_type, p_producer,p_size,price,p_content,stock, sale)
+values (product_seq.nextval, #{p_name}, #{p_type}, #{p_producer}, #{p_size}, #{price},
+							 #{p_content}, #{stock}, #{sale})
+</insert>
+
+<insert id="insertSelectKey">
+		<selectKey keyProperty="p_no" order="BEFORE" resultType="long">
+			select product_seq.nextval from dual
+		</selectKey>
+insert into product(p_no,p_name,p_type, p_producer,p_size,price,p_content, stock, sale)
+values (#{p_no}, #{p_name}, #{p_type}, #{p_producer}, #{p_size}, #{price},
+							 #{p_content}, #{stock}, #{sale})
+</insert>
+
+</mapper>
