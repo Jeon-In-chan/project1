@@ -1,10 +1,8 @@
 package com.team4.project1.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +31,7 @@ public class ProductController {
 	
 	private ProductService productService;
 	
-	@GetMapping("/product")
+	@GetMapping("/list")
 	public void list(Model model) {
 		log.info("list");
 		model.addAttribute("list", productService.getList());

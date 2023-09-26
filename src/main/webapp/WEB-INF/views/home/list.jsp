@@ -55,7 +55,8 @@ tr:last-child td:last-child {
 
 $(document).ready(function() {
 	(function() {
-		var p_no ='<c:out value="${product.p_no}" ></c:out>';
+		var p_no = '<c:out value="${product.p_no}" />';
+		console.log(p_no);
 		$.getJSON("/home/getImageList", {p_no: p_no}, function(arr){
 			console.log(arr);
 			var str = "";
@@ -119,7 +120,7 @@ $(document).ready(function() {
   	<c:forEach items="${list}" var="product">
 		<tr>
 			<td><c:out value="${product.p_no }" ></c:out></td>
-			<td><div class="uploadResult"><ul></ul></div></td>
+			<td><div class='uploadResult'><ul></ul></div></td>
 			<td><c:out value="${product.p_name}" /></td>
 			<td><c:out value="${product.price }" /></td>
 		</tr>

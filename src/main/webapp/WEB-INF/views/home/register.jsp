@@ -134,6 +134,7 @@ textarea#p_content {
 	
 		<div class="inputArea">
 			<button type="submit" id="register_Btn" class="btn btn-primary">등록</button>
+			<button type="reset" id="register_Btn" class="btn btn-primary">초기화</button>
 		</div>
 </form>
 <script>
