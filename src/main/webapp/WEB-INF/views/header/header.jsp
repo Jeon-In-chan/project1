@@ -83,11 +83,9 @@ a.button:hover {
 }
 
     </style> 
- 
-
- 
 
 <header>
+
   <h1>쇼핑몰 이름</h1>
   <nav>
     <ul>

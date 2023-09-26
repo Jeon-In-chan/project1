@@ -55,7 +55,7 @@ tr:last-child td:last-child {
 
 $(document).ready(function() {
 	(function() {
-		var p_no = '<c:out value="${product.p_no }" />';
+		var p_no ='<c:out value="${product.p_no}" ></c:out>';
 		$.getJSON("/home/getImageList", {p_no: p_no}, function(arr){
 			console.log(arr);
 			var str = "";
@@ -83,7 +83,7 @@ $(document).ready(function() {
 		});
 	})();
 	
-	$(".uploadResult").on("click", "li", function(e) {
+/* 	$(".uploadResult").on("click", "li", function(e) {
 		console.log("view image");
 		var liObj = $(this);
 		var extensionName = liObj.data("filename").substring(liObj.data("filename").lastIndexOf("."));
@@ -95,7 +95,7 @@ $(document).ready(function() {
 			//download
 			self.location ="/download?fileName="+path;
 		}
-	});
+	}); */
 	
 	
 
@@ -118,7 +118,7 @@ $(document).ready(function() {
   <tbody>
   	<c:forEach items="${list}" var="product">
 		<tr>
-			<td name="p_no"><c:out value="${product.p_no }" /></td>
+			<td><c:out value="${product.p_no }" ></c:out></td>
 			<td><div class="uploadResult"><ul></ul></div></td>
 			<td><c:out value="${product.p_name}" /></td>
 			<td><c:out value="${product.price }" /></td>
