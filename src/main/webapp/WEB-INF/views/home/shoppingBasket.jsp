@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@include file="./header/header.jsp"%>
+<%@include file="../header/header.jsp"%>
 <html>
 <head>
 <title>shoppingBasket</title>
@@ -193,7 +193,8 @@ text-align: left;
                     <c:forEach items="${list}" var="basket">
 						<tr>
 							<td><input type="checkbox"></td>
-							<td>${basket.productVO.image }</td>
+							<%-- <td>${basket.productVO.image }</td> --%>
+							<td>image</td>
 							<td>${basket.b_no }</td>
 							<td>${basket.productVO.p_no }</td>
 							<td>${basket.productVO.p_name }</td>

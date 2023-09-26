@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </resultMap>
 
 <select id="getList" resultMap="basketMap">
-select s.b_no, s.p_no, s.quantity, s.b_regdate, p.p_name, p.price, p.image
+select s.b_no, s.p_no, s.quantity, s.b_regdate, p.p_name, p.price
 from shoppingBasket s left join product p on s.p_no = p.p_no where s.p_no >0
 </select>
 

@@ -104,11 +104,15 @@ public class UploadController {
 			String extensionName = uploadFileName.substring(uploadFileName.lastIndexOf("."));
 			String pureFileName = uploadFileName.substring(0, uploadFileName.lastIndexOf("."));
 
+			log.info("pureFileName: " + pureFileName);
+			log.info("extensionName: " + extensionName);
 			log.info("only file name: " + uploadFileName);
 
 			UUID uuid = UUID.randomUUID();
 
 			uploadFileName = pureFileName + "_" + uuid.toString() + extensionName;
+
+			log.info("uploadFileName: " + uploadFileName);
 
 //			File saveFile = new File(uploadFolder, uploadFileName);
 			File saveFile = new File(uploadPath, uploadFileName);
@@ -140,7 +144,7 @@ public class UploadController {
 	@ResponseBody
 	public ResponseEntity<byte[]> getFile(String fileName) {
 		log.info("fileName: "+fileName);
-		File file = new File("C:\\upload\\" + fileName);
+		File file = new File("C:\\upload\\"+  fileName);
 		log.info("file: "+file);
 		
 		ResponseEntity<byte[]> result = null;

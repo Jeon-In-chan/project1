@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@include file="../header/header.jsp"%>
 <!DOCTYPE html>
 <html>
@@ -132,8 +134,9 @@ textarea#p_content {
 	
 		<div class="inputArea">
 			<button type="submit" id="register_Btn" class="btn btn-primary">등록</button>
+			<button type="reset" id="register_Btn" class="btn btn-primary">초기화</button>
 		</div>
-
+</form>
 <script>
 $(document).ready(function(e) {
 	var formObj = $("form[role='form']");
@@ -211,7 +214,7 @@ $(document).ready(function(e) {
 });
 
 
-var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+var regex = new RegExp("(.*?)\.(jpg|gif|png|jpeg)$");
 var maxSize = 5242880; //5MB
 
 function checkExtension(fileName, fileSize) {
@@ -219,7 +222,7 @@ function checkExtension(fileName, fileSize) {
 		alert("file size over");
 		return false;
 	}
-	if(regex.test(fileName)) {
+	if(!regex.test(fileName)) {
 		alert("해당 종류의 파일은 업로드 할 수 없습니다");
 		return false;
 	}
@@ -241,16 +244,14 @@ function showUploadResult(uploadResultArr) {
 		var extensionName = obj.fileName.substring(obj.fileName.lastIndexOf("."));
 		var pureFileName = obj.fileName.substring(0, obj.fileName.lastIndexOf("."));
 		
-		if(!obj.image) {	
-			alert("이미지 파일이 아닙니다.");
-		} else {
+		if(obj.image) {	
 			var fileCallPath = encodeURIComponent(obj.uploadPath + "/"+pureFileName + "_" + obj.uuid + "_s" + extensionName);
-   
+			console.log(fileCallPath);
 		        str += "<li data-path='"+obj.uploadPath+"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'><div>";
 				str += "<span>" + obj.fileName + "</span>"; 
-				str += "<button type='button' data-file='"+fileCallPath+"' data-type='image' class='btn btn-warning'>";
+				str += "<button type='button' data-file='"+fileCallPath+"' data-type='image' class='btn btn-warning btn-circle'>";
 				str += "<i class='fa fa-times'></i></button><br>"; 
-				str += "<img src='/display?fileName="+fileCallPath+"'>";
+				str += "<img src='/project1/display?fileName="+fileCallPath+"'>";
 				str += "</div></li>";
 
 		}
@@ -263,6 +264,5 @@ function showUploadResult(uploadResultArr) {
 	
 
         </script>
-	</form>
 </body>
 </html>
