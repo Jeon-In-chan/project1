@@ -26,6 +26,11 @@ public class ProductServiceImpl implements ProductService {
 		log.info("get list");
 		return mapper.getList();
 	}
+	@Override
+	public List<ProductVO> getP_no(Long p_no) {
+		log.info("get p_no");
+		return mapper.getP_no(p_no);
+	}
 	@Transactional
 	@Override
 	public void register(ProductVO productVO) {

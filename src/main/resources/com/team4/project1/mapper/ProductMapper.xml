@@ -11,6 +11,10 @@ select * from product where p_no >0
 ]]>
 </select>
 
+<select id="getP_no" resultType="com.team4.project1.domain.ProductVO">
+select p_no from product
+</select>
+
 <insert id="insert">
 insert into product(p_no,p_name,p_type, p_producer,p_size,price,p_content,stock, sale)
 values (product_seq.nextval, #{p_name}, #{p_type}, #{p_producer}, #{p_size}, #{price},

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 import com.team4.project1.domain.ProductImageVO;
 import com.team4.project1.domain.ProductVO;
 import com.team4.project1.service.ProductService;
@@ -32,10 +33,12 @@ public class ProductController {
 	private ProductService productService;
 	
 	@GetMapping("/list")
-	public void list(Model model) {
+	public void list(Model model, Long p_no) {
 		log.info("list");
+		model.addAttribute("p_no", productService.getP_no(p_no));
 		model.addAttribute("list", productService.getList());
 	}
+
 	
 	@GetMapping("/register")
 //	@PreAuthorize("isAuthenticated()")

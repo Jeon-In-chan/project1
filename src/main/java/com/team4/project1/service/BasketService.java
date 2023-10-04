@@ -9,5 +9,8 @@ import com.team4.project1.domain.ProductVO;
 public interface BasketService {
 	
 	public List<BasketVO> getList();
+
+	public BasketVO read(String b_no);
+	
 	
 }

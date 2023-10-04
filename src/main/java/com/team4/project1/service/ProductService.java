@@ -11,6 +11,8 @@ public interface ProductService {
 	
 	public List<ProductVO> getList();
 	
+	public List<ProductVO> getP_no(Long p_no);
+	
 	public List<ProductImageVO> getImageList(Long p_no);
 
 }

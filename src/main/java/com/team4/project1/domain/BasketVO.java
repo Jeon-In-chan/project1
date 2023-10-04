@@ -2,7 +2,6 @@ package com.team4.project1.domain;
 
 import java.util.Date;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -23,5 +22,13 @@ public class BasketVO {
 	private Date b_regDate;
 	
 	private ProductVO productVO;
-
+	
+	private int totalPrice;
+	
+	public int getTotalPrice() {
+		this.totalPrice = this.productVO.getPrice() * this.quantity;
+		return totalPrice;
+	}
+	
+	    
 }

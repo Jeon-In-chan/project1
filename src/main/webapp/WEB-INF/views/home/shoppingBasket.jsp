@@ -156,6 +156,7 @@ td {
 #click {
 text-align: left;
 }
+
 </style>
 <body>
     <section class="cart">
@@ -176,20 +177,11 @@ text-align: left;
                         <td>상품명</td>
                         <td>카트에 담은 날짜</td>
                         <td>상품수량</td>
-                        <td>상품금액</td>    
+                        <td>상품금액</td>
+                        <td>총금액</td>    
                     </tr>
                 </thead>
                 <tbody>
-                   <!--  <tr class="cart__list__detail">
-                        <td><input type="checkbox"></td>
-                        <td><img src="#"></td>
-                        <td>바구니 번호</a></td>
-                        <td>상품 번호</a></td>
-                        <td>상품명</a></td>
-                        <td>카트에 담은 날짜</a></td>
-                        <td> 상품 수량 </td>
-                        <td><span class="price"> 상품금액 </td>
-                    </tr>   --> 
                     <c:forEach items="${list}" var="basket">
 						<tr>
 							<td><input type="checkbox"></td>
@@ -198,9 +190,11 @@ text-align: left;
 							<td>${basket.b_no }</td>
 							<td>${basket.productVO.p_no }</td>
 							<td>${basket.productVO.p_name }</td>
-							<td>${basket.b_regDate }</td>
+							<td><fmt:formatDate value="${basket.b_regDate }"
+									pattern="yyyy-MM-dd" /></td>
 							<td>${basket.quantity }</td>
 							<td>${basket.productVO.price}</td>
+							<td>${basket.totalPrice}</td>
 						
 						</tr>
 					</c:forEach>
@@ -211,13 +205,12 @@ text-align: left;
                         <td id="click" colspan="2"><button class="cart__list__optionbtn">선택상품 삭제</button>
                             <button class="cart__list__optionbtn">선택상품 선택</button>
                         </td>
-                    
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><a href="#">총 금액</a></td>
                         <td></td>
+                        <td>${list.totalPrice}</td>
                     </tr>
                 </tfoot>
             </form>
